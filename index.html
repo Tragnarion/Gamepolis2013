@@ -790,9 +790,116 @@ def pearson_coeff(dic1, dic2):
 
 					<section>
 						<h2>Casos de uso</h2>
+						<h3>Progresión de niveles</h3>
+						<p>
+							Estamos trabajándo en un pequeño juego para plataformas móviles para el cual hemos implementatdo el sistema que os acabo de presentar.
+						</p>
+						<p>
+							Los diseñadores de niveles han de tener claro como crear cada parte y necesitan datos detallados de como se comporta el jugador.
+						</p>
+						<p>
+							Como ejemplo os presento los datos recogidos de más de 200 partidas jugadas. Para hacerlos una idea esas 200 partidas nos han generado más de 20.000 eventos.
+						</p>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+
+							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
+						</aside>
+					</section>
+
+					<section>
+						<h2>Casos de uso</h2>
+						<h3>Progresión de niveles</h3>
+						<p>
+							En qué nivel muere un jugador y más importante en que parte del nivel ha estado. En el ejemplo tenemos dos differentes gráficos, el plot de donde muere la gente y el plot por nivel que nos indica en cada nivel cuándo ha muerto.
+						</p>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+
+							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
+						</aside>
+					</section>
+
+					<section>
+						<h2>Casos de uso</h2>
+						<h3>Progresión de niveles</h3>
+
+						<p>
+							Meter imagen del plot de muertes
+						</p>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+
+							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
+						</aside>
+					</section>
+
+					<section>
+						<h2>Casos de uso</h2>
+						<h3>Progresión de niveles</h3>
+						<p>
+							Otro elemento importante es saber en cada nivel que ha pasado. Datos acomulados nos proporcionan mucha información al respecto: Balas usadas, recargas realizadas, pickups encontrados, vida perdida, etc...
+						</p>
+						<p>
+							El siguiente ejemplo nos compara los pickups encontrados en una linea con la vida que ha perdido un jugador. Nos es muy útil para saber si el numero de pickups es correcto o no.
+						</p>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+
+							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
+						</aside>
+					</section>
+
+					<section>
+						<h2>Casos de uso</h2>
+						<h3>Progresión de niveles</h3>
+
+						<p>
+							Meter imagen del plot de muertes vs health perdido
+						</p>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+
+							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
+						</aside>
+					</section>
+
+					<section>
+						<h2>Casos de uso</h2>
 						<h3>Tracking de movimiento</h3>
 						<p>
-							Ejemplo de juego de coches, assasins creed y algún shooter.
+							Otro ejemplo muy útil es conocer el movimiento de los jugadores. El sistema de análisis DNA usado en la serie <b>Assassin's Creed</b> se inspira en <b>Google Maps</b> para representar movimientos de los jugadores
+						</p>
+
+						<p>
+							Saber por dónde pasan los jugadores o incluso la IA nos indica muchas veces fallos en el diseño graves y muy difíciles de depurar en un estado tardío del desarollo.
+						</p>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+
+							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
+
+							http://engineroom.ubi.com/game-telemetry-with-playtest-dna-on-assassins-creed-part-3/
+						</aside>
+					</section>
+
+					<section>
+						<h2>Casos de uso</h2>
+						<h3>Heatmaps</h3>
+						<p>
+							Los heatmaps son otra visaulización fundamental de cualquier análisis, no sólo para juegos. En el mundo web o UI tenemos heatmaps de clicks para saber si los usarios encuentran las secciones, los banners son efectivos etc.
+						</p>
+						<p>
+							En juegos se suelen general mapas de muertes o de kills pero es útil converger ambos en uno para poder visualizar bien lo que pasa en un mapa.
+						</p>
+						<p>
+							Pero podemos incluso general heatmaps de consumo de memoria en ciertas partes de juego, de rendimiento, etc...
 						</p>
 
 						<aside class="notes">
@@ -806,13 +913,19 @@ def pearson_coeff(dic1, dic2):
 						<h2>Casos de uso</h2>
 						<h3>Heatmaps</h3>
 						<p>
-							Use de heatmaps: death, kills y flow maps
+							El siguiente ejemplo nos muestra un mapa balanceado y un mapa de flujo del conjunto de muertes/deaths (el que muere y su asesino). El mapa balenceado es normalizado.
 						</p>
 
-						<aside class="notes">
-							Just talk about what exactly we want to achieve
+						<p>
+							<img src="img/NormalizedBalanceHeatmap.png" width="400"/>
+							<img src="img/FlowMapThumbnail.jpg" width="400"/>
+						</p>
+						
 
-							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
+						<aside class="notes">
+							Talk about what the balanced maps is and what the flow maps is. Flow mapss represent how the action goes over time.
+
+							The balanced map has noise on the edges but thats because of the missing data.
 						</aside>
 					</section>
 
@@ -820,13 +933,50 @@ def pearson_coeff(dic1, dic2):
 						<h2>Casos de uso</h2>
 						<h3>Matchmaking</h3>
 						<p>
-							Ejemplo de uso de aplicación de similitudes y MDS/PCA para matchmaking. Variante de skill-based, social-based etc etc etc
+							Incluso los más modernos sistemas de matchmaking intentar generar grupos para crear partidas más divertidas o equilibradas.
+						</p>
 
-							Ejemplo de true-skill!!
-
+						<aside class="notes">
 							http://www.doc.ic.ac.uk/~sgc/papers/ramirez_cgat10.pdf
 
 							https://www.google.es/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&ved=0CFIQFjAE&url=http%3A%2F%2Fgdcvault.com%2Fplay%2F194%2FE-Pluribus-Unum-Matchmaking-in&ei=lILcUfaZO-7w0gWo4YEg&usg=AFQjCNHSlrauD-_wDELATqgMrG_KYUsMxg&sig2=jdDI7xxmwFDf8yyjaP0eQQ&cad=rja
+						</aside>
+					</section>
+
+					<section>
+						<h2>Casos de uso</h2>
+						<h3>Matchmaking</h3>
+						<p>
+							Un ejemplo es el sistema de matchmaking de <b>Xbox Live</b> llamado <b>True Skill</b>.
+						</p>
+						<p>
+							La idea es crear un ranking o score del jugador que va variando a medida que juega y despues crear grupos equilibrados de jugadores.
+						</p>
+						<p>
+							Estimación bayesiana desarollado por <b>Microsoft Research Cambridge</b> 
+						</p>
+
+						<aside class="notes">
+							http://www.doc.ic.ac.uk/~sgc/papers/ramirez_cgat10.pdf
+
+							https://www.google.es/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&ved=0CFIQFjAE&url=http%3A%2F%2Fgdcvault.com%2Fplay%2F194%2FE-Pluribus-Unum-Matchmaking-in&ei=lILcUfaZO-7w0gWo4YEg&usg=AFQjCNHSlrauD-_wDELATqgMrG_KYUsMxg&sig2=jdDI7xxmwFDf8yyjaP0eQQ&cad=rja
+						</aside>
+					</section>
+
+					<section>
+						<h2>Casos de uso</h2>
+						<h3>Matchmaking</h3>
+						<p>
+							Modela el skill del jugador como una función de densidad probabilistica [µ, σ]
+							<ul>
+								<li>µ es la media (estimada actual)</li>
+								<li>σ es la desviación estándar (eincertidumbre)</li>
+							</ul>
+						</p>
+
+						<p>
+							<img src="img/true_skill1.png" width="400"/>
+							<img src="img/true_skill2.png" width="400"/>
 						</p>
 
 						<aside class="notes">
