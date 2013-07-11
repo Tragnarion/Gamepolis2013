@@ -62,7 +62,7 @@
 					<section>
 						<h1>Introducción</h1>
 						<ul>
-							<li>La indústria de los videojuegos esta creciendo a ritmos que nunca se han visto.</li>
+							<li>La industria de los videojuegos esta creciendo a ritmos que nunca se han visto.</li>
 							<li>Más de 60 mil millones de US$ en 2011 y unos 80 mil millones en 2012 según Colin Sebastian (RW Baird)</li>
 							<li>Las inversiones aumentan y por lo tanto el riesgo</li>
 							<li>Jugadores más exigentes</li>
@@ -159,7 +159,7 @@
 					<section>
 						<h2>¿Sistema propio?</h2>
 						<p>
-							Pero bueno, ¿aquí no estabamos para hacerlo nosotros mismos? Pues sí :D Así que vamos a ver los pros y los contras de un systema propio.
+							Pero bueno, ¿aquí no estabamos para hacerlo nosotros mismos? Pues sí :D
 						</p>
 						<h3 class="fragment roll-in">PROS</h3>
 						<ul class="fragment roll-in">
@@ -178,7 +178,7 @@
 					<section>
 						<h2>¿Sistema propio?</h2>
 						<p>
-							Todo tiene su lado malo, en este caso vamos a llamarlo oscuro ya que tampoco es para tanto XD.
+							Todo tiene su lado malo, en este caso es solo algo gris ya que tampoco es para tanto XD.
 						</p>
 						<h3 class="fragment roll-in">CONS</h3>
 						<ul class="fragment roll-in">
@@ -290,7 +290,7 @@
 					<section>
 						<h1>Análisi de datos</h1>
 						<ul>
-							<li>Normalización y estanderización</li>
+							<li>Normalización y estandarización</li>
 							<li>Recomendadores y agrupamiento</li>
 							<li>Extracción y seleción de datos</li>
 							<li>Clasificación</li>
@@ -496,9 +496,17 @@ def standardize_matrix(m):
 						<h2>Recomendadores y agrupamiento</h2>
 						<h3>Distancia euclidiana</h3>
 						<p>
-							EXPLIACR!
+							También conocido como la generailzación a n dimensiones del teorema de Pitágoras. útil para valores lineales.
+						</p>
+						<p>
+							Tiene problemas con valores extremos pero es barato por lo que se muy usado. Si sólo comparamos distancias podemos obviar la raíz quadrada.
+						</p>
+						<p>
+							la distancia euclidiana entre dos puntos <i>P = (p<sub>1</sub>,p<sub>2</sub>,...,p<sub>n</sub>)</i> y <i>Q = (q<sub>1</sub>,2<sub>1</sub>,...,q<sub>n</sub>)</i> en un espacio de dimensión n &#8477;<sup>n</sup>.
+						</p>
 
-							1 / 1 + eucli porque asi nos evitamos divisiones por 0
+						<p>
+							<img src="img/eucli.png" height="150px"/>
 						</p>
 
 						<aside class="notes">
@@ -509,6 +517,10 @@ def standardize_matrix(m):
 					<section>
 						<h2>Recomendadores y agrupamiento</h2>
 						<h3>Distancia euclidiana</h3>
+
+						<p>
+							La operación extra para la similitud nos resuelve cualquier posible división por cero.
+						</p>
 
     <pre><code data-trim>
 def euclidean_dist(dic1, dic2):
@@ -531,7 +543,15 @@ def euclidean_similarity(dic1, dic2):
 						<h2>Recomendadores y agrupamiento</h2>
 						<h3>Coeficiente de Pearson</h3>
 						<p>
-							EXPLIACR!
+							Resuelve los problemas de la distancia euclidiana con los valores extremos ya que en computa correlaciones entre todo los elementos usando medias.
+						</p>
+
+						<p>
+							Resuelve los problemas de la distancia euclidiana con los valores extremos ya que computa correlaciones entre todo los elementos usando medias.
+						</p>
+
+						<p>
+							<img src="img/pearson.png" height="150px"/>
 						</p>
 
 						<aside class="notes">
@@ -580,6 +600,42 @@ def pearson_coeff(dic1, dic2):
 						<h2>Recomendadores y agrupamiento</h2>
 						<h3>Ponderado</h3>
 
+						<p>
+							Un recomendador ponderado se basa en similitudes que consideramos pesos.
+						</p>
+
+						<pre><code data-trim>def weightedRating(dictio, item, similarity = pearson_coeff):
+    simils = {x: similarity(dictio[user], dictio[x], term)
+              for x in dictio if x != user}
+    numerator   = {}
+    denominator = {}
+
+    # The ratings dictionary is traversed, while filling the
+    # auxiliary dictionaries with the values found.
+    for id1 in simils:
+        for id2 in dictio[id1]:
+            if not numerator.has_key(id2):
+                numerator  [id2] = []
+                denominator[id2] = []
+            s = simils[id1]
+            numerator  [id1].append(dictio[id1][id2])
+            denominator[id1].append(s)
+
+    # Compute and sort weighted ratings    
+    result = []
+    for id2 in numerator:
+        s1 = sum(numerator  [id2])
+        s2 = sum(denominator[id2])
+        if s2 == 0:
+            mean = 0.0
+        else:
+            mean = s1/s2
+        result.append((id2,mean))
+
+    result.sort(key = lambda x: x[1], reverse=True)
+    return result
+    </code></pre>
+
 						<aside class="notes">
 							Just talk about what exactly we want to achieve
 						</aside>
@@ -589,17 +645,31 @@ def pearson_coeff(dic1, dic2):
 						<h2>Recomendadores y agrupamiento</h2>
 						<h3>k-means</h3>
 
+						<p>
+							El algoritmo de k-means busca particiones de datos tales que cada punto este asignado a un centro llamado centroide del grupo. 
+						</p>
+						<ol>
+							<li>Selecionar <i>k</i> puntos al azar como centroides iniciales.</li>
+							<li>Asignar cada dato al centroide más cercano</li>
+							<li>Recalcular los centroides de los <i>k</i> grupos para que sean el centro geométrico del grupo</li>
+							<li>Volver al paso dos hasta que los grupos no varían</li>
+						</ol>
+
 						<aside class="notes">
-							Just talk about what exactly we want to achieve
+							El centroide no ha de ser necesariamente un punto del gruopo
 						</aside>
 					</section>
 
 					<section>
 						<h2>Extracción y seleción de datos</h2>
 						<p>
-							Que es?
-							datos = input + ruido
-							Cómo quitar el ruido?
+							La regla es simple: <b>datos = señal + ruido</b>
+						</p>
+						<p>
+							Tampoco todos los datos son necesarios y a veces no nos dejan ver la realidad.
+						</p>
+						<p>
+							Se conoce como <b>reducción de la dimensionalidad</b>
 						</p>
 
 						<aside class="notes">
@@ -745,9 +815,48 @@ def pearson_coeff(dic1, dic2):
 						<h2>GA System</h2>
 						<p>
 							El sistema que proponenmos es bastante sencillo de implementar.
-
-							Hablar sobre Node.js y MongoDB
 						</p>
+						<ul>
+							<li>Componentes
+								<ol>
+									<li>Telemetría</li>
+									<li>Processo de datos (Análisis)</li>
+								</ol>
+							</li>
+							<li>Montado sobre OpenShift
+								<ul>
+									<li>Gratuíto para proyectos pequeños</li>
+									<li>Muy asequible, unos 20$ al més, para proyectos grandes</li>
+									<li>Todo en la cloud, sobre Amazon</li>
+								</ul>
+							</li>
+						</ul>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+
+							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
+						</aside>
+					</section>
+
+					<section>
+						<h2>GA System</h2>
+						<ul>
+							<li>Implementado sobre Node.js
+								<ul>
+									<li>Performance increíble por usar Async I/O</li>
+									<li>No es multi-thread! Menus consumo de RAM y CPU</li>
+									<li>JavaScript mola!</li>
+									<li>Package index igual que Python por ejemplo</li>
+								</ul>
+							</li>
+							<li>Dos instancias de MongoDB
+								<ul>
+									<li>NoSQL es perfecto para este caso</li>
+									<li>Rápido y flexible</li>
+								</ul>
+							</li>
+						</ul>
 
 						<aside class="notes">
 							Just talk about what exactly we want to achieve
@@ -771,6 +880,7 @@ def pearson_coeff(dic1, dic2):
 
 					<section>
 						<h2>La API</h2>
+
 						<p>
 							Explicar la idea de las sessiones.
 
@@ -891,6 +1001,26 @@ def pearson_coeff(dic1, dic2):
 
 					<section>
 						<h2>Casos de uso</h2>
+						<h3>Tracking de movimiento</h3>
+						
+						<p>
+							<img src="img/assassins_1.jpg" width="300" height="200"/>
+							<img src="img/assassins_2.jpg" width="300" height="200"/>
+							<br/>
+							<img src="img/assassins_3.png" height="200"/>
+						</p>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+
+							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
+
+							http://engineroom.ubi.com/game-telemetry-with-playtest-dna-on-assassins-creed-part-3/
+						</aside>
+					</section>
+
+					<section>
+						<h2>Casos de uso</h2>
 						<h3>Heatmaps</h3>
 						<p>
 							Los heatmaps son otra visaulización fundamental de cualquier análisis, no sólo para juegos. En el mundo web o UI tenemos heatmaps de clicks para saber si los usarios encuentran las secciones, los banners son efectivos etc.
@@ -919,8 +1049,7 @@ def pearson_coeff(dic1, dic2):
 						<p>
 							<img src="img/NormalizedBalanceHeatmap.png" width="400"/>
 							<img src="img/FlowMapThumbnail.jpg" width="400"/>
-						</p>
-						
+						</p>						
 
 						<aside class="notes">
 							Talk about what the balanced maps is and what the flow maps is. Flow mapss represent how the action goes over time.
