@@ -138,7 +138,7 @@
 					<section>
 						<h2>¿Sistema propio?</h2>
 						<p>
-							El eterno dilema XD. Vamos a ver un poco en detallo los pros y los cons de hacer nuestro propio sistema.
+							El eterno dilema XD. Vamos a ver un poco en detalle los pros y los cons de hacer nuestro propio sistema.
 						</p>
 						<p>
 							También es posible usar un sistema comercial ya existente. Tales como:
@@ -222,7 +222,7 @@
 						<ul class="fragment roll-in">
 							<li>Dar soporte a las deciciones de negocio</li>
 							<li>Conducir la toma de decisiones</li>
-							<li>Mejorar el conocimiento que tengamos del proyecti/producto</li>
+							<li>Mejorar el conocimiento que tengamos del proyecto/producto</li>
 						</ul>
 
 						<aside class="notes">
@@ -238,7 +238,7 @@
 						</p>
 
 						<ul class="fragment roll-in">
-							<li>Los datos en formato RAW sin procesar vamos</li>
+							<li>Los datos en formato RAW sin procesar</li>
 							<li>Describe en detalla a acciones, eventos, objectos, etc...</li>
 							<li>Proviene de multitud de fuentes: tests, clientes, servidores, etc...</li>
 						</ul>
@@ -252,12 +252,12 @@
 						<h2>Métrica</h2>
 
 						<p>
-							En matemáticas se define la métrica como la distancia entre elementos en un espacio. En nuestro caso sería una medida quantitativa e interpretable de los atributos de uno o más objectos en un contexto conocido.
+							En matemáticas se define la métrica como la distancia entre elementos en un espacio. En nuestro caso sería una medida quantitativa e interpretable de los atributos de uno o más objetos en un contexto conocido.
 						</p>
 
 						<ul class="fragment roll-in">
 							<li>Contexto, por ejemplo, usarios del juego, rendimiento, etc..</li>
-							<li>Objetos como items, jugadores, usarios, etc...</li>
+							<li>Objetos como items, jugadores, usuarios, etc...</li>
 							<li>Atributos de cada objecto, por ejemplo, el número de items de un jugador, etc...</li>
 						</ul>
 
@@ -419,7 +419,7 @@
 
 					<section>
 						<h2>Normalización</h2>
-						<h3>Substitución por la media o la moda</h3>
+						<h3>Sustitución por la media o la moda</h3>
 						<p>
 							Reemplazamos valores inválidos de la columna de atributos por la moda o la media.
 						</p>
@@ -454,7 +454,7 @@ def mean_missing(l):
 							Cuando analizamos differentes datos a menudo intentamos comparar peras con manzanas, o almenos encontrar una relación entre sus atributos.
 						</p>
 						<p>
-							Con una matríz de atributos ajustaremos cada columna para que puedan ser comparable entre ellas.
+							Con una matríz de atributos ajustaremos cada columna para que puedan ser comparada con otra.
 						</p>
     <pre><code data-trim>
 from numpy import average, std
@@ -542,9 +542,6 @@ def euclidean_similarity(dic1, dic2):
 					<section>
 						<h2>Recomendadores y agrupamiento</h2>
 						<h3>Coeficiente de Pearson</h3>
-						<p>
-							Resuelve los problemas de la distancia euclidiana con los valores extremos ya que en computa correlaciones entre todo los elementos usando medias.
-						</p>
 
 						<p>
 							Resuelve los problemas de la distancia euclidiana con los valores extremos ya que computa correlaciones entre todo los elementos usando medias.
@@ -553,6 +550,23 @@ def euclidean_similarity(dic1, dic2):
 						<p>
 							<img src="img/pearson.png" height="150px"/>
 						</p>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+						</aside>
+					</section>
+
+					<section>
+						<h2>Recomendadores y agrupamiento</h2>
+						<h3>Coeficiente de Pearson</h3>
+						<p>
+							EL coeficinete de Pearson tiene un rango de [-1,1] el cual nos indica la correlación entre las variables.
+						</p>
+						<ul>
+							<li><b>1:</b> Las variables son perfectamente correlativas</li>
+							<li><b>0:</b> No existe correlación entre ellas</li>
+							<li><b>-1:</b> Las variables son negativamente correlativas o opuestas</li>
+						</ul>
 
 						<aside class="notes">
 							Just talk about what exactly we want to achieve
@@ -601,7 +615,7 @@ def pearson_coeff(dic1, dic2):
 						<h3>Ponderado</h3>
 
 						<p>
-							Un recomendador ponderado se basa en similitudes que consideramos pesos.
+							Un recomendador ponderado se basa en similitudes considerados pesos.
 						</p>
 
 						<pre><code data-trim>def weightedRating(dictio, item, similarity = pearson_coeff):
@@ -681,10 +695,65 @@ def pearson_coeff(dic1, dic2):
 						<h2>Extracción y seleción de datos</h2>
 						<h3>PCA</h3>
 						<p>
-							Que es?
-							datos = input + ruido
-							Cómo quitar el ruido?
+							Princiapl Component Analysis
 						</p>
+						<ul>
+							<li>Encuentra los ejes que forman la base de la nuve de puntos de datos. Sería como la fusión de los atributos.</li>
+							<li>Consiste en la diagonalización de la matriz de la covarianza.</li>
+							<li>En corto, nos indica que componenets influyen más.</li>
+							<li>Representación visual en 2D o 3D.</li>
+						</ul>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+						</aside>
+					</section>
+
+					<section>
+						<h2>Extracción y seleción de datos</h2>
+						<h3>PCA</h3>
+						<p>
+							Princiapl Component Analysis
+						</p>
+						<ol>
+							<li>Calcular la matriz de covarianza</li>
+							<li>Obtener los valores y vectores propios (base)</li>
+							<li>Encontrar los valores y vectores relevantes</li>
+							<li>Indica cuántos componentes son necesarios para obtener una vaianza X</li>
+							<li>La suma de los valores propios nos da 1</li>
+						</ol>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+						</aside>
+					</section>
+
+					<section>
+						<h2>Extracción y seleción de datos</h2>
+						<h3>PCA</h3>
+						<p>
+							<img src="img/pca_1.JPG" width="400"/>
+							<img src="img/pca_2.JPG" width="400"/>
+						</p>
+
+						<aside class="notes">
+							Imagen 1 Plot de valores propios y imagen 2 plot en 3d
+						</aside>
+					</section>
+
+					<section>
+						<h2>Extracción y seleción de datos</h2>
+						<h3>LDA</h3>
+						<p>
+							Lineal Discrimination Analysis
+						</p>
+						<ul>
+							<li>Analiza la dependencia lineal entre variables</li>
+							<li>Produce una predicción</li>
+							<li>Se considera machine learning</li>
+							<li>Se usa en set de datos conocido de entrenamiento para predecir el resultado de un set desconocido</li>
+							<li>Basado en estimaciones estadísticas</li>
+						</ul>
 
 						<aside class="notes">
 							Just talk about what exactly we want to achieve
@@ -695,9 +764,8 @@ def pearson_coeff(dic1, dic2):
 						<h2>Extracción y seleción de datos</h2>
 						<h3>LDA</h3>
 						<p>
-							Que es?
-							datos = input + ruido
-							Cómo quitar el ruido?
+							<img src="img/lda_1.JPG" width="400"/>
+							<img src="img/lda_2.JPG" width="400"/>
 						</p>
 
 						<aside class="notes">
@@ -709,9 +777,47 @@ def pearson_coeff(dic1, dic2):
 						<h2>Extracción y seleción de datos</h2>
 						<h3>MDS</h3>
 						<p>
-							Que es?
-							datos = input + ruido
-							Cómo quitar el ruido?
+							Multi Dimensional Scaling
+						</p>
+
+						<p>
+							Busca un espacio de dimensión reducida donde las distancias relativas entre los elementos se mantengan.
+						</p>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+						</aside>
+					</section>
+
+					<section>
+						<h2>Extracción y seleción de datos</h2>
+						<h3>MDS</h3>
+						<ol>
+							<li>Crear una matríz de distancias MxM donde M representan las observaciones</li>
+							<li>Crea una distribución aleatoria al espacio deseado (2D por ejemplo) de M</li>
+							<li>Paa cada par de la distribución aleatoria se calcula la distancia entre el espacio proyectado (2D por ejemplo) y el original</li>
+							<li>
+								<ol>
+									<li>Corregir la el error entre el espacio aleatorio y el original</li>
+									<li>Si el erroro es mayorel random actual (sin corregir) es la solución.</li>
+									<li>Sino corregir el error y volver al paso 3.1</li>
+								</ol>
+							</li>
+						</ol>
+
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+						</aside>
+					</section>
+
+					<section>
+						<h2>Extracción y seleción de datos</h2>
+						<h3>MDS</h3>
+						<p>
+							Las muertes (azul) están estrechamente relacionadas con las variables analizadas pero los kills (rojo) no.
+						</p>
+						<p>
+							<img src="img/mds.JPG" width="500"/>
 						</p>
 
 						<aside class="notes">
@@ -722,9 +828,10 @@ def pearson_coeff(dic1, dic2):
 					<section>
 						<h2>Clasificación</h2>
 						<p>
-							Que es?
-							datos = input + ruido
-							Cómo quitar el ruido?
+							Principalmente consiste en reconocer patrones y poner etiquetas a cada individuo a partir de ciertas propiedades que lo identifiquen.
+						</p>
+						<p>
+							En juegos los clasificadores se suelen usar para identificar jugadores hard-core, casuales, etc...
 						</p>
 
 						<aside class="notes">
@@ -736,23 +843,10 @@ def pearson_coeff(dic1, dic2):
 						<h2>Clasificación</h2>
 						<h3>kNN</h3>
 						<p>
-							Que es?
-							datos = input + ruido
-							Cómo quitar el ruido?
+							k-Nearets-Neighbours
 						</p>
-
-						<aside class="notes">
-							Just talk about what exactly we want to achieve
-						</aside>
-					</section>
-
-					<section>
-						<h2>Clasificación</h2>
-						<h3>Clasificador lineal basado en distancias</h3>
 						<p>
-							Que es?
-							datos = input + ruido
-							Cómo quitar el ruido?
+							Consiste en clasificar un elemento contanto los k vecinos más cercanos.
 						</p>
 
 						<aside class="notes">
@@ -762,16 +856,14 @@ def pearson_coeff(dic1, dic2):
 
 					<section>
 						<h2>Clasificación</h2>
-						<h3>Medir la clasificación</h3>
+						<h3>kNN</h3>
 						<ul>
-							<li>Matriz de confusión</li>
-							<li>Error</li>
-							<li>Exactitud</li>
-							<li>Precisión</li>
-							<li>Sensibilidad</li>
-							<li>F1</li>
-							<li>Especificado</li>
+							<li><b>k=3:</b> El círculo rojo se clasifica como un rombo</li>
+							<li><b>k=5:</b> El círuclo rojo se clasifica como un cuadrado</li>
 						</ul>
+						<p>
+							<img src="img/knn.JPG" width="500"/>
+						</p>
 
 						<aside class="notes">
 							Just talk about what exactly we want to achieve
@@ -786,9 +878,47 @@ def pearson_coeff(dic1, dic2):
 						</p>
 						<ul>
 							<li>Student</li>
-							<li>McNemar</li>
+							<li>McNemar, muy usado ya que es muy ligero</li>
 						</ul>
 
+						<aside class="notes">
+							Just talk about what exactly we want to achieve
+						</aside>
+					</section>
+
+					<section>
+						<h2>Clasificación</h2>
+						<h3>McNemar</h3>
+						<p>
+							Dos implementaciones del test de McNemar. Personalmente prefiere la implementación que se encuentra en Wikipeda.
+						</p>
+						
+						<pre><code data-trim>import collections
+compare = lambda x, y: collections.Counter(x) == collections.Counter(y)
+
+def McNemar(predF, predG, classes):
+    if compare(predF, predG):
+        return False
+
+    f = predF != classes
+    g = predG == classes
+    A = float(sum(map(lambda x, y: x and y, f, g)))
+    f = predG != classes
+    g = predF == classes
+    B = float(sum(map(lambda x, y: x and y, f, g)))
+
+    t = (abs(A - B) - 1) ** 2 / (A + B)
+    return t > 3.842
+
+def McNemarWikipedia(predF, predG, classes):
+    if compare(predF, predG):
+        return False
+        
+    b = float(len(list(filter(lambda x: (predG[x]=='0') and (predF[x]=='1'), range(len(predG))))))
+    c = float(len(list(filter(lambda x: (predG[x]=='1') and (predF[x]=='0'), range(len(predG))))))
+    t = (b - c) ** 2 / (b + c)
+    return t > 3.842
+    </code></pre>
 						<aside class="notes">
 							Just talk about what exactly we want to achieve
 						</aside>
@@ -848,6 +978,7 @@ def pearson_coeff(dic1, dic2):
 									<li>No es multi-thread! Menus consumo de RAM y CPU</li>
 									<li>JavaScript mola!</li>
 									<li>Package index igual que Python por ejemplo</li>
+									<li>Jayson, JSON-RPC 2.0 package</li>
 								</ul>
 							</li>
 							<li>Dos instancias de MongoDB
@@ -881,21 +1012,33 @@ def pearson_coeff(dic1, dic2):
 					<section>
 						<h2>La API</h2>
 
-						<p>
-							Explicar la idea de las sessiones.
-
-							Tipos de evento.
-
-							Como son las llamadas.
-
-							Y un ejemplo de applicación de API en cliente.
-						</p>
+						<ul>
+							<li>Basado en sessiones, permite tener estadísticas simultáneas.</li>
+							<li>La id de una sessión es simplemente la ID Encryptada de MongoDB</li>
+							<li>Cada evento se submitea a una sessión existente</li>
+							<li>Las sessiones han de tener una validez temporal, 24h por ejemplo
+						</ul>
 
 						<aside class="notes">
 							Just talk about what exactly we want to achieve
 
 							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
 						</aside>
+					</section>
+
+					<section>
+						<h2>La API</h2>
+
+						<pre><code data-trim>
+startSession: function(userid, platform, build, callback)
+endSession: function(sessionid, callback)
+
+addGamePlayEvent: function(sessionid, basedata, eventdata, callback)
+
+addDebugEvent: function(sessionid, basedata, eventdata, callback)
+
+addMonetaryEvent: function(sessionid, basedata, eventdata, callback)
+    </code></pre>
 					</section>
 
 					<section>
@@ -908,7 +1051,7 @@ def pearson_coeff(dic1, dic2):
 							Los diseñadores de niveles han de tener claro como crear cada parte y necesitan datos detallados de como se comporta el jugador.
 						</p>
 						<p>
-							Como ejemplo os presento los datos recogidos de más de 200 partidas jugadas. Para hacerlos una idea esas 200 partidas nos han generado más de 20.000 eventos.
+							Descubrimos que los primeros niveles son mucho más difíciles que los últimos.
 						</p>
 
 						<aside class="notes">
@@ -922,22 +1065,7 @@ def pearson_coeff(dic1, dic2):
 						<h2>Casos de uso</h2>
 						<h3>Progresión de niveles</h3>
 						<p>
-							En qué nivel muere un jugador y más importante en que parte del nivel ha estado. En el ejemplo tenemos dos differentes gráficos, el plot de donde muere la gente y el plot por nivel que nos indica en cada nivel cuándo ha muerto.
-						</p>
-
-						<aside class="notes">
-							Just talk about what exactly we want to achieve
-
-							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
-						</aside>
-					</section>
-
-					<section>
-						<h2>Casos de uso</h2>
-						<h3>Progresión de niveles</h3>
-
-						<p>
-							Meter imagen del plot de muertes
+							En qué nivel muere un jugador y más importante en que parte del nivel ha estado.
 						</p>
 
 						<aside class="notes">
@@ -954,22 +1082,10 @@ def pearson_coeff(dic1, dic2):
 							Otro elemento importante es saber en cada nivel que ha pasado. Datos acomulados nos proporcionan mucha información al respecto: Balas usadas, recargas realizadas, pickups encontrados, vida perdida, etc...
 						</p>
 						<p>
-							El siguiente ejemplo nos compara los pickups encontrados en una linea con la vida que ha perdido un jugador. Nos es muy útil para saber si el numero de pickups es correcto o no.
+							Aúnque a primera vista parecia que el número de pickups era suficiente los jugadores seguían muriéndo en nivel muy tempranos. La solución fue aumentar el número de pickups.
 						</p>
-
-						<aside class="notes">
-							Just talk about what exactly we want to achieve
-
-							http://www.altdevblogaday.com/2013/02/04/brewing-your-own-game-analytics-service/
-						</aside>
-					</section>
-
-					<section>
-						<h2>Casos de uso</h2>
-						<h3>Progresión de niveles</h3>
-
 						<p>
-							Meter imagen del plot de muertes vs health perdido
+							Nos os puedo decir si ahora mismo hay suficientes ya que el juego que tenéis en el stand captura los eventos para ese fin! Así que si nos queréis hechar una mano jugad un poco!
 						</p>
 
 						<aside class="notes">
