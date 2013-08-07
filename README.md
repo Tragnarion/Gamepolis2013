@@ -1,4 +1,10 @@
-Gamepolis2013
-=============
+# Gamepolis2013 #
 
-Repository for Gamepolis 2013 Conferences
+## Content ##
+ 
+ - Game Analitics - Telemetría para videojuegos
+
+## Game Analitics - Telemetría para videojuegos ##
+
+
+
