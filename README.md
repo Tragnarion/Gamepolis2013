@@ -22,6 +22,6 @@ Slides and code are published under the Apache 2.0 license
 
 ## Game Analitics - Telemetría para videojuegos ##
 
- - Author: Moritz Wundke (moritz(dot)wundke(at)tragnarion(dot)com)
+ - Author: Moritz Wundke - moritz(dot)wundke(at)tragnarion(dot)com
  - [Slides](http://tragnarion.github.io/Gamepolis2013/)
  - Code: Will be here in the master repo. Expect to see it as soon as possible. All data processing methods and algorithms are implemented using [Python](http://www.python.org/) and [SciPy](http://www.scipy.org/).
